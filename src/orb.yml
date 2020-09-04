@@ -5,7 +5,7 @@ orbs:
   only-build-pr-with-git-flow:
     jobs:
       check_enable_to_build:
-        executor: simple-executor
+        executor: simple_executor
         parameters:
           build_branches:
             description: "permit branches to build without pull requests. separate spaces"
@@ -17,7 +17,7 @@ orbs:
     commands:
       my_inline_command:
         parameters:
-          build_branch:
+          build_branches:
             type: string
         steps:
           - run: sh ./script/pr_existing_check.sh <<parameters.build_branches>>
@@ -28,7 +28,7 @@ orbs:
             type: string
             default: "2.4"
         docker:
-          - image: circleci/ruby:<<parameters.version>>
+          - image: circleci/ruby:<<parameters.version>
 
 workflows:
   only-build-pr-with-git-flow:
