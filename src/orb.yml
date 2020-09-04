@@ -27,7 +27,7 @@ commands:
     steps:
       - run:
           name: Check enable to build
-          shell: /bin/bash
+          shell: /bin/sh
           command: |
             for build_branch in <<parameters.build_branches>>; do
               if [ $CIRCLE_BRANCH = $build_branch ]; then
