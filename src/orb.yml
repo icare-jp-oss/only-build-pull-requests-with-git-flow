@@ -26,12 +26,13 @@ commands:
         type: string
     steps:
       - run:
+          name: Check enable to build
           shell: /bin/bash
           command: |
             for build_branch in <<parameters.build_branches>>; do
               if [ $CIRCLE_BRANCH = $build_branch ]; then
                 exit 0
-              end
+              fi
             done
             if [ -n "$CIRCLE_PULL_REQUEST" ]; then
               exit 0
