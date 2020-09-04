@@ -47,3 +47,16 @@ executors:
   simple_executor:
     docker:
       - image: alstolten/alpine-with-curl:latest
+
+examples:
+  only-build-pull-requests-with-git-flow:
+    description: "Simulate 'Only build pull requests' with git-flow"
+    usage:
+      version: 2.1
+      orbs:
+        only-build-pr-with-git-flow: icare-jp-oss/only-build-pull-requests-with-git-flow:0.0.1
+      workflow:
+        jobs:
+          - only-build-pr-with-git-flow/check_enable_to_build:
+            api_token: "YOUR_API_TOKEN"
+            build_branches: "master develop"
