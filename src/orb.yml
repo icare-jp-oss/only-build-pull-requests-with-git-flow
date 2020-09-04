@@ -21,16 +21,16 @@ orbs:
             type: string
         steps:
           - run: sh ./script/pr_existing_check.sh <<parameters.build_branches>>
-#    executors:
-#      simple_executor:
-#        parameters:
-#          version:
-#            type: string
-#            default: "2.4"
-#        docker:
-#          - image: circleci/ruby:<<parameters.version>>
-#
-#workflows:
-#  only-build-pr-with-git-flow:
-#    jobs:
-#      - only-build-pr-with-git-flow:check_enable_to_build
+    executors:
+      simple_executor:
+        parameters:
+          version:
+            type: string
+            default: "2.4"
+        docker:
+          - image: circleci/ruby:<<parameters.version>>
+
+workflows:
+  only-build-pr-with-git-flow:
+    jobs:
+      - only-build-pr-with-git-flow:check_enable_to_build
