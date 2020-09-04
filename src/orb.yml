@@ -37,7 +37,7 @@ commands:
             if [ -n "$CIRCLE_PULL_REQUEST" ]; then
               exit 0
             else
-              echo "If a pull request has not been created, CI will not be executed"
+              echo "If a pull request has not been created, CI will be canceled"
               curl -X POST https://circleci.com/api/v2/workflow/${CIRCLE_WORKFLOW_ID}/cancel \
               -H 'Accept: application/json' \
               -H 'Circle-Token: <<parameters.api_token>>'
@@ -45,9 +45,5 @@ commands:
 
 executors:
   simple_executor:
-    parameters:
-      version:
-        type: string
-        default: "2.4"
     docker:
-      - image: circleci/ruby:<<parameters.version>>
+      - image: alstolten/alpine-with-curl:latest
